@@ -1,30 +1,38 @@
+const routes = [
+    { name: 'animals', path: '/animals', component: AnimalCollection },
+    { name: 'food', path: '/food', component: FoodItems },
+    { name: 'home', path: '', component: HomePage },
+    { name: 'kanbanboard', path: '/kanbanboard', component: KanbanBoardPage },
+    { name: 'about', path: '/about-us', component: AboutPage },
+    { name: 'contact', path: '/contact', component: ContactPage },
+]
+
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(), // HASH IS ONLY FOR LOCAL USE !!!!! Otherwise use --> VueRouter.createWebHistory(),
+    routes
+});
+
 const app = Vue.createApp({
     data() {
         return {
-            cart: 0,
-            product: 'Socks',
-            image: './assets/images/socks_blue.jpg',
-            inStock: true,
-            details: ['50% cotton', '30% wool', '20% polyester'],
-            variants: [
-              { id: 2234, color: 'green', image: './assets/images/socks_green.jpg' },
-              { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg' },
-            ]
+            cart: [],
+            premium: true,
         }
     },
     methods: {
-        addToCart() {
-            this.cart += 1
+        updateCart(id) {
+            this.cart.push(id)
         },
-        // solution
-        removeFromCart() {
-            if (this.cart >= 1) {
-                this.cart -= 1
-            }
-        },
-        // solution
-        updateImage(variantImage) {
-            this.image = variantImage
-        }
     }
 })
+
+// Register components
+app.component('product-display', ProductDisplay);
+app.component('review-form', ReviewForm);
+app.component('review-list', ReviewList);
+
+// Use router
+app.use(router)
+
+// Mount App
+app.mount('#app')
