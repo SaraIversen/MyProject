@@ -1,10 +1,5 @@
 const KanbanBoardPage = {
   template: /*html*/`
-    <div>
-      <h1>Kanban Board Page!</h1>
-      <p>I want to learn about Kanban Boards.</p>
-    </div>
-
     <h1>Kanban Board</h1>
 
     <div class="board">

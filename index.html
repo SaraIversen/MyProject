@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/stylesNavbar.css" />
     <link rel="stylesheet" href="./assets/css/stylesFooter.css" />
     <link rel="stylesheet" href="./assets/css/stylesKanbanBoard.css" />
+    <link rel="stylesheet" href="./assets/css/stylesContactForm.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
     <!-- Import Vue Router -->
@@ -30,7 +31,10 @@
         </a>
       </div>
 
-      <router-view></router-view>
+      <div class="page-container">
+        <router-view></router-view>
+      </div>
+      
 
       <!-- <div class="cart">Cart({{ cart.length }})</div>
       <product-display :premium="premium" @add-to-cart="updateCart"></product-display> -->
@@ -74,11 +78,11 @@
     <script src="./components/ReviewForm.js"></script>
     <script src="./components/ReviewList.js"></script>
     <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ContactForm.js"></script>
 
     <!-- Load the Pages" -->
-    <script src="./pages/AnimalCollection.js"></script>
-    <script src="./pages/FoodItems.js"></script>
-
+    <!-- <script src="./pages/AnimalCollection.js"></script>
+    <script src="./pages/FoodItems.js"></script> -->
     <script src="./pages/HomePage.js"></script>
     <script src="./pages/KanbanBoardPage.js"></script>
     <script src="./pages/AboutPage.js"></script>

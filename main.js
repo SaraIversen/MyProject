@@ -1,6 +1,6 @@
 const routes = [
-    { name: 'animals', path: '/animals', component: AnimalCollection },
-    { name: 'food', path: '/food', component: FoodItems },
+    // { name: 'animals', path: '/animals', component: AnimalCollection },
+    // { name: 'food', path: '/food', component: FoodItems },
     { name: 'home', path: '', component: HomePage },
     { name: 'kanbanboard', path: '/kanbanboard', component: KanbanBoardPage },
     { name: 'about', path: '/about-us', component: AboutPage },
@@ -15,14 +15,11 @@ const router = VueRouter.createRouter({
 const app = Vue.createApp({
     data() {
         return {
-            cart: [],
-            premium: true,
+
         }
     },
     methods: {
-        updateCart(id) {
-            this.cart.push(id)
-        },
+
     }
 })
 
@@ -30,6 +27,7 @@ const app = Vue.createApp({
 app.component('product-display', ProductDisplay);
 app.component('review-form', ReviewForm);
 app.component('review-list', ReviewList);
+app.component('contact-form', ContactForm);
 
 // Use router
 app.use(router)

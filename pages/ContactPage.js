@@ -1,8 +1,6 @@
 const ContactPage = {
   template: /*html*/`
-    <div>
-      <h1>Contact Page!</h1>
-      <p>I want to learn about contact.</p>
-    </div>
+    <h1 class="contact-title">Contact</h1>
+    <contact-form></contact-form>
   `
 }
