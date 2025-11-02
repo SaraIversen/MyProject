@@ -14,7 +14,7 @@ const ContactForm = {
     <label for="message">Message</label>      
     <textarea id="message" v-model="message"></textarea>
 
-    <input class="button" type="submit" value="Submit">   
+    <input class="button" type="submit" value="Submit" @click="onSubmit">   
   </form>
   `,
   data() {
@@ -26,6 +26,10 @@ const ContactForm = {
     }
   },
   methods: {
+    onSubmit() {
+      // You can replace this with a modal or router navigation
+      alert('Submit clicked!');
+    },
     // onSubmit() {
     //   if (this.name === '' || this.review === '' || this.rating === null || this.recommend === null) {
     //     alert('Review is incomplete. Please fill out every field.')

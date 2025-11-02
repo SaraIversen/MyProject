@@ -2,31 +2,50 @@ const KanbanBoardPage = {
   template: /*html*/`
     <h1>Kanban Board</h1>
 
-    <div class="board">
-      <div v-for="(column, colIndex) in columns" :key="column.id" class="column"
-           @dragover.prevent
-           @drop="dropCard(colIndex)">
+    <div class="kanbanboard">
+      <div
+        v-for="(column, colIndex) in columns"
+        :key="column.id"
+        class="column"
+        @dragover.prevent="onDragOver(colIndex, $event)"
+        @drop="onDrop(colIndex)"
+      >
+
         <h2>{{ column.title }}</h2>
 
-        <div v-for="(card, cardIndex) in column.cards"
-             :key="card.id"
-             class="card"
-             draggable="true"
-             @dragstart="dragStart(colIndex, cardIndex, $event)"
-             @dragend="dragEnd($event)">
+        <div
+          v-for="(card, cardIndex) in column.cards"
+          :key="card.id"
+          class="card"
+          :class="{ 'drag-over': isCardHovered(colIndex, cardIndex) }"
+          draggable="true"
+          @dragstart="onDragStart(colIndex, cardIndex, $event)"
+          @dragend="onDragEnd($event)"
+          @dragover.prevent="onCardDragOver(colIndex, cardIndex, $event)"
+          @dragleave="onCardDragLeave(colIndex, cardIndex, $event)"
+        >
           {{ card.text }}
         </div>
 
-        <input v-model="newCardText[colIndex]" placeholder="New card..." @keyup.enter="addCard(colIndex)" />
+        <input
+          v-model="newCardText[colIndex]"
+          placeholder="New card..."
+          @keyup.enter="addCard(colIndex)"
+        />
         <button class="add-card" @click="addCard(colIndex)">Add Card</button>
       </div>
+
+      <div class="column new-list">
+        <input
+          v-model="newColumnTitle"
+          placeholder="New list title..."
+          @keyup.enter="addColumn"
+        />
+        <button class="add-column" @click="addColumn">Add List</button>
+      </div>
     </div>
-
-    <hr>
-
-    <input v-model="newColumnTitle" placeholder="New column title..." @keyup.enter="addColumn" />
-    <button class="add-column" @click="addColumn">Add Column</button>
   `,
+
   data() {
     return {
       columns: [
@@ -37,6 +56,7 @@ const KanbanBoardPage = {
       newColumnTitle: '',
       newCardText: [],
       draggedCard: null,
+      dropTarget: { colIndex: null, cardIndex: null },
     };
   },
 
@@ -50,6 +70,7 @@ const KanbanBoardPage = {
       });
       this.newColumnTitle = '';
     },
+
     addCard(colIndex) {
       const text = this.newCardText[colIndex]?.trim();
       if (!text) return;
@@ -59,18 +80,57 @@ const KanbanBoardPage = {
       });
       this.newCardText[colIndex] = '';
     },
-    dragStart(colIndex, cardIndex, event) {
+
+    onDragStart(colIndex, cardIndex, event) {
       this.draggedCard = { colIndex, cardIndex };
       event.target.classList.add('dragging');
     },
-    dragEnd(event) {
+
+    onDragEnd(event) {
       event.target.classList.remove('dragging');
+      this.dropTarget = { colIndex: null, cardIndex: null };
     },
-    dropCard(targetColIndex) {
+
+    onCardDragOver(colIndex, cardIndex, event) {
+      this.dropTarget = { colIndex, cardIndex };
+    },
+
+    onCardDragLeave(colIndex, cardIndex, event) {
+      // Clear highlight if we leave the card area
+      if (this.dropTarget.colIndex === colIndex && this.dropTarget.cardIndex === cardIndex) {
+        this.dropTarget = { colIndex: null, cardIndex: null };
+      }
+    },
+
+    onDragOver(colIndex, event) {
+      // If hovering over empty column
+      if (!this.columns[colIndex].cards.length) {
+        this.dropTarget = { colIndex, cardIndex: null };
+      }
+    },
+
+    onDrop(targetColIndex) {
+      if (!this.draggedCard) return;
+
       const { colIndex, cardIndex } = this.draggedCard;
       const card = this.columns[colIndex].cards.splice(cardIndex, 1)[0];
-      this.columns[targetColIndex].cards.push(card);
+      const { colIndex: dropCol, cardIndex: dropCardIndex } = this.dropTarget;
+
+      if (dropCardIndex !== null && dropCol === targetColIndex) {
+        this.columns[targetColIndex].cards.splice(dropCardIndex, 0, card);
+      } else {
+        this.columns[targetColIndex].cards.push(card);
+      }
+
       this.draggedCard = null;
+      this.dropTarget = { colIndex: null, cardIndex: null };
+    },
+
+    isCardHovered(colIndex, cardIndex) {
+      return (
+        this.dropTarget.colIndex === colIndex &&
+        this.dropTarget.cardIndex === cardIndex
+      );
     },
   },
 };

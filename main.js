@@ -1,7 +1,6 @@
 const routes = [
-    // { name: 'animals', path: '/animals', component: AnimalCollection },
-    // { name: 'food', path: '/food', component: FoodItems },
     { name: 'home', path: '', component: HomePage },
+    { name: 'boards', path: '/boards', component: BoardsPage },
     { name: 'kanbanboard', path: '/kanbanboard', component: KanbanBoardPage },
     { name: 'about', path: '/about-us', component: AboutPage },
     { name: 'contact', path: '/contact', component: ContactPage },

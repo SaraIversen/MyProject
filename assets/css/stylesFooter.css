@@ -9,3 +9,8 @@
   background-color: #333;
   color: white;
 }
+
+.footer p {
+  padding-top: 90px;
+  font-size: 1rem;
+}

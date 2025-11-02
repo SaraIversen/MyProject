@@ -1,0 +1,27 @@
+.home-page {
+  text-align: center;
+}
+
+.homePage-image {
+  width: 50%;
+  margin: auto;
+} 
+
+.feature-container {
+  display: flex;
+  align-items: center;      /* vertically center the h2 and image */
+  justify-content: space-between;  /* space between heading and image */
+  margin: 2rem 0;
+  flex-wrap: wrap;          /* wraps on smaller screens */
+}
+
+.feature-container h2 {
+  flex: 1;                  /* take available space */
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+.homePage-sideImage {
+  width: 25%;
+  margin: auto;
+} 

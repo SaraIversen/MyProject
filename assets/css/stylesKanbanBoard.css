@@ -9,7 +9,7 @@ h2 {
   margin: 0 0 0.5rem;
 }
 
-.board {
+.kanbanboard {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
@@ -60,4 +60,8 @@ input {
   box-sizing: border-box;
   padding: 0.3rem;
   margin-bottom: 0.3rem;
+}
+
+.card.drag-over {
+  border-top: 2px solid #007bff;
 }
