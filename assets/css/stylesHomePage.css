@@ -1,27 +1,88 @@
+/* General layout */
 .home-page {
   text-align: center;
+  margin: auto;
 }
 
-.homePage-image {
-  width: 50%;
-  margin: auto;
+/* Make top image scale nicely */
+.homePage-image img {
+  max-width: 500px;
+  height: auto;
+  border: none;
+  box-shadow: none;
 } 
 
-.feature-container {
+/* Feature section layout */
+.feature-content{
   display: flex;
-  align-items: center;      /* vertically center the h2 and image */
-  justify-content: space-between;  /* space between heading and image */
-  margin: 2rem 0;
-  flex-wrap: wrap;          /* wraps on smaller screens */
+  align-items: center;
+  justify-content: space-between; 
+  flex-wrap: nowrap;
+  text-align: left;
+  width: 60%;
+  margin: auto;
+  padding: 1rem 0;
+  gap: 2rem;
 }
 
-.feature-container h2 {
-  flex: 1;                  /* take available space */
-  text-align: left;
-  font-size: 1.5rem;
+.feature-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.feature-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-text p {
+  color: #555;
+  line-height: 1.5;
 }
 
 .homePage-sideImage {
-  width: 25%;
-  margin: auto;
+  width: 40%;
+  padding: 15px;
+  border: 2px solid #d8d8d8;
+  -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
+  box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
 } 
+
+.black-background {
+  background-color: #c2c2c2;
+  /* color: white; */
+}
+
+
+/* 🔽 MOBILE RESPONSIVENESS 🔽 */
+@media (max-width: 800px) {
+  .feature-content {
+    flex-direction: column; 
+    text-align: center;
+    width: 100%;
+  }
+
+  .feature-text {
+    order: 2; /* ensure text appears below image if needed */
+    padding: 0 1rem;
+  }
+
+  .homePage-sideImage {
+    width: 70%;
+    max-width: 400px;
+    order: 1;
+  }
+
+  .feature-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .feature-text p {
+    font-size: 1rem;
+  }
+
+  .homePage-image img {
+    width: 80%;
+  }
+}

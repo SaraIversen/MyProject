@@ -1,7 +1,7 @@
 const routes = [
-    { name: 'home', path: '', component: HomePage },
+    { name: 'home', path: '/', component: HomePage },
     { name: 'boards', path: '/boards', component: BoardsPage },
-    { name: 'kanbanboard', path: '/kanbanboard', component: KanbanBoardPage },
+    { name: 'kanbanboard', path: '/board/:id/:title', component: KanbanBoardPage },
     { name: 'about', path: '/about-us', component: AboutPage },
     { name: 'contact', path: '/contact', component: ContactPage },
 ]

@@ -1,6 +1,9 @@
 const KanbanBoardPage = {
   template: /*html*/`
-    <h1>Kanban Board</h1>
+  <div class="defaultPageSetup">
+  
+    <button @click="$router.push('/boards')">← Back to Boards</button>
+    <h1>{{ $route.params.title }}</h1>
 
     <div class="kanbanboard">
       <div
@@ -44,10 +47,12 @@ const KanbanBoardPage = {
         <button class="add-column" @click="addColumn">Add List</button>
       </div>
     </div>
+  </div>
   `,
 
   data() {
     return {
+      boardTitle: '',
       columns: [
         { id: 1, title: 'To Do', cards: [{ id: 1, text: 'Example task' }] },
         { id: 2, title: 'In Progress', cards: [] },

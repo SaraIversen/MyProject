@@ -9,19 +9,23 @@ const HomePage = {
 
       <h1>Features</h1>
 
-      <div class="feature-container">
-        <h2>Kanban boards</h2>
-        <p>Visualize your workflow and manage tasks efficiently with customizable Kanban boards. Drag and drop tasks between columns to reflect their current status and keep your team aligned.</p>
-        <div class="homePage-sideImage">
-          <img v-bind:src="imageBlue">
+      <div class="feature-container black-background">
+        <div class="feature-content">
+          <div class="feature-text">
+            <h2>Kanban boards</h2>
+            <p>Visualize your workflow and manage tasks efficiently with customizable Kanban boards. Drag and drop tasks between columns to reflect their current status and keep your team aligned.</p>
+          </div>
+          <img v-bind:src="imageBlue" class="homePage-sideImage">
         </div>
       </div>
 
-    <div class="feature-container">
-      <h2>Integrated game design documentation</h2>
-      <p>Keep all your game design documents organized and easily accessible within the platform. Collaborate with your team in real-time and ensure everyone is on the same page.</p>
-        <div class="homePage-sideImage">
-          <img v-bind:src="imageGreen">
+      <div class="feature-container">
+        <div class="feature-content">
+          <img v-bind:src="imageGreen" class="homePage-sideImage">
+          <div class="feature-text">
+            <h2>Integrated game design documentation</h2>
+            <p>Keep all your game design documents organized and easily accessible within the platform. Collaborate with your team in real-time and ensure everyone is on the same page.</p>
+          </div>
         </div>
       </div>
     </div>
