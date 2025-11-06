@@ -4,6 +4,7 @@ const routes = [
     { name: 'kanbanboard', path: '/board/:id/:title', component: KanbanBoardPage },
     { name: 'about', path: '/about-us', component: AboutPage },
     { name: 'contact', path: '/contact', component: ContactPage },
+    { name: 'test2', path: '/test2', component: TestPage2 },
 ]
 
 const router = VueRouter.createRouter({

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./assets/css/stylesBoards.css" />
     <link rel="stylesheet" href="./assets/css/stylesKanbanBoard.css" />
     <link rel="stylesheet" href="./assets/css/stylesContactForm.css" />
+    <link rel="stylesheet" href="./assets/css/stylesModal.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
     <!-- Import Vue Router -->
@@ -29,6 +30,7 @@
       <!-- <div class="nav-bar"></div> -->
       <div class="topnav" id="myTopnav">
         <router-link :to="{ name: 'home' }" class="active">Home</router-link>
+        <router-link :to="{ name: 'test2' }">Test2</router-link>
         <!-- <router-link :to="{ name: 'boards' }">Boards</router-link> -->
         <!-- <router-link :to="{ name: 'kanbanboard' }">Kanban Board</router-link> -->
         <router-link :to="{ name: 'about' }">About us</router-link>
@@ -89,6 +91,7 @@
     <script src="./components/ReviewList.js"></script>
     <script src="./components/ProductDisplay.js"></script>
     <script src="./components/ContactForm.js"></script>
+    <script src="./components/Modal.js"></script>
 
     <!-- Load the Pages" -->
     <script src="./pages/HomePage.js"></script>
@@ -96,6 +99,7 @@
     <script src="./pages/KanbanBoardPage.js"></script>
     <script src="./pages/AboutPage.js"></script>
     <script src="./pages/ContactPage.js"></script>
+    <script src="./pages/TestPage2.js"></script>
 
     <!-- Import App -->
     <script src="./main.js"></script>

@@ -1,0 +1,53 @@
+ .modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+  overflow-y: auto; /* optional: allow scroll if modal is tall */
+}
+
+.modal {
+  margin-top: 49px;
+  background: white;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  overflow: hidden;
+  /* animation: fadeIn 0.2s ease; */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background: #007bff; */
+  /* color: white; */
+  /* padding: 0.6rem 1rem; */
+}
+
+.modal-body {
+  text-align: left;
+  /* padding: 1rem; */
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  /* color: white; */
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end; /* aligns items to the right */
+}
+
+/* @keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+} */

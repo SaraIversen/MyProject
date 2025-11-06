@@ -2,7 +2,7 @@ const KanbanBoardPage = {
   template: /*html*/`
   <div class="defaultPageSetup">
   
-    <button @click="$router.push('/boards')">← Back to Boards</button>
+    <button class="button" @click="$router.push('/boards')">Back</button>
     <h1>{{ $route.params.title }}</h1>
 
     <div class="kanbanboard">

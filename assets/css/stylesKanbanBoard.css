@@ -17,6 +17,20 @@ h2 {
   padding-bottom: 1rem;
 }
 
+.kanbanboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.member-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
 .column {
   background: white;
   border-radius: 8px;
@@ -24,6 +38,19 @@ h2 {
   min-width: 250px;
   display: flex;
   flex-direction: column;
+}
+.column h2 {
+  cursor: grab;
+}
+/* are these working ??? */
+.column h2:active {
+  cursor: grabbing;
+}
+.column.dragging-column {
+  opacity: 0.5;
+} 
+.column.hovered {
+  outline: 2px dashed #999;
 }
 
 .card {
@@ -41,27 +68,49 @@ h2 {
 
 .add-column,
 .add-card {
-  background: #007bff;
-  color: white;
+  background: #ffffff;
+  /* color: white; */
   border: none;
   border-radius: 4px;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
   margin-top: 0.3rem;
+  text-align: left;
 }
 
 .add-column:hover,
 .add-card:hover {
-  background: #0056b3;
+  background: #eeeeee;
 }
 
-input {
+.kanbanboard-input {
+  background: #e8e8e8;
   width: 100%;
   box-sizing: border-box;
   padding: 0.3rem;
   margin-bottom: 0.3rem;
+  border-radius: 4px;
+  border: none;
+
+  /* Default state: blue outline */
+  outline: 2px solid #007BFF; 
+}
+/* On hover or focus: remove outline */
+.kanbanboard-input:hover,
+.kanbanboard-input:focus {
+  outline: none;
 }
 
 .card.drag-over {
   border-top: 2px solid #007bff;
+}
+
+.empty-drop-zone{
+  border: 2px dashed #ccc;
+  border-radius: 6px;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9em;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }

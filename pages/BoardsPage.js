@@ -9,26 +9,29 @@ const BoardsPage = {
         <div v-if="starredBoards.length">
             <h2>Starred Boards</h2>
             <div class="boards-container">
-                <router-link
-                    v-for="board in starredBoards"
+                <div v-for="board in starredBoards"
                     :key="board.id"
-                    class="board"
-                    :to="{ 
-                        name: 'kanbanboard', 
-                        params: { 
-                            id: board.id.toString(),
-                            title: board.title 
-                        } 
-                    }"
-                >
-                <div class="star" @click.stop="toggleStar(board)">
-                    <span v-if="board.starred" class="star-filled">★</span>
-                    <span v-else class="star-outline">☆</span>
-                </div>
+                    class="board">
 
-                <img :src="board.image" class="board-image" />
-                <h2>{{ board.title }}</h2>
-                </router-link>
+                    <div class="star" @click.stop="toggleStar(board)">
+                        <span v-if="board.starred" class="star-filled">★</span>
+                        <span v-else class="star-outline">☆</span>
+                    </div>
+
+                    <router-link class="board-link"
+                        :to="{ 
+                            name: 'kanbanboard', 
+                            params: { 
+                                id: board.id.toString(),
+                                title: board.title 
+                            } 
+                        }"
+                    >
+
+                    <img :src="board.image" class="board-image" />
+                    <h2>{{ board.title }}</h2>
+                    </router-link>
+                </div>
             </div>
         </div>
 
@@ -37,11 +40,17 @@ const BoardsPage = {
         <!-- 📋 Regular boards -->
         <h2>YOUR BOARDS</h2>
         <div class="boards-container">
-            <router-link
-                v-for="(board, boardIndex) in boards"
+            <div v-for="board in boards"
                 :key="board.id"
-                class="board"
-                :to="{ 
+                class="board">
+
+                <div class="star" @click.stop="toggleStar(board)">
+                    <span v-if="board.starred" class="star-filled">★</span>
+                    <span v-else class="star-outline">☆</span>
+                </div>
+
+                <router-link class="board-link"
+                                :to="{ 
                         name: 'kanbanboard', 
                         params: { 
                             id: board.id.toString(),
@@ -50,14 +59,10 @@ const BoardsPage = {
                     }"
                 >
 
-                <div class="star" @click.stop="toggleStar(board)">
-                    <span v-if="board.starred" class="star-filled">★</span>
-                    <span v-else class="star-outline">☆</span>
-                </div>
-
                 <img :src="board.image" class="board-image" />
                 <h2>{{ board.title }}</h2>
-            </router-link>
+                </router-link>
+            </div>
 
             <!-- ➕ Create new board card -->
             <div class="board create-board" @click="openModal">
