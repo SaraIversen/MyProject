@@ -84,12 +84,12 @@ label {
   margin-bottom: 5px;
 }
 
-select {
+/* select {
   height: 40px;
   font-size: 20px;
   background-color: white;
   cursor: pointer;
-}
+} */
 
 textarea {
   width: 95%;

@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="./assets/css/stylesKanbanBoard.css" />
     <link rel="stylesheet" href="./assets/css/stylesContactForm.css" />
     <link rel="stylesheet" href="./assets/css/stylesModal.css" />
+    <link rel="stylesheet" href="./assets/css/stylesRoadmap.css" />
+    <link rel="stylesheet" href="./assets/css/stylesRoadmap2.css" />
+    <link rel="stylesheet" href="./assets/css/stylesDocuments.css" />
+    <link rel="stylesheet" href="./assets/css/stylesDashboard.css" />
+    <link rel="stylesheet" href="./assets/css/stylesBacklog.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
     <!-- Import Vue Router -->
@@ -27,15 +32,52 @@
   </head>
   <body>
     <div id="app">
-      <!-- <div class="nav-bar"></div> -->
-      <div class="topnav" id="myTopnav">
-        <router-link :to="{ name: 'home' }" class="active">Home</router-link>
-        <router-link :to="{ name: 'test2' }">Test2</router-link>
-        <!-- <router-link :to="{ name: 'boards' }">Boards</router-link> -->
-        <!-- <router-link :to="{ name: 'kanbanboard' }">Kanban Board</router-link> -->
-        <router-link :to="{ name: 'about' }">About us</router-link>
-        <router-link :to="{ name: 'contact' }">Contact</router-link>
-        <router-link :to="{ name: 'boards' }" class="split">Login</router-link>
+
+      <!-- Wesite for non-members -->
+      <div class="topnav" id="myTopnav" v-if="showNav">
+        <div class="left-links">
+          <router-link :to="{ name: 'home' }" class="active">Home</router-link>
+            <div class="dropdown">
+            <button class="dropbtn">Dropdown 
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div> 
+          <router-link :to="{ name: 'about' }">About us</router-link>
+          <router-link :to="{ name: 'contact' }">Contact</router-link>
+        </div>
+        <div class="right-items">
+          <router-link :to="{ name: 'dashboard' }" class="split" @click="toggleNav">Login</router-link>
+        </div>
+      </div>
+
+      <!-- Wesite for when logged in -->
+      <div class="topnav" id="myTopnav" v-else="showNav">
+        <div class="left-links">
+          <router-link :to="{ name: 'dashboard' }" class="active"><i class="fa fa-fw fa-home"></i> Dashboard</router-link>
+          <router-link :to="{ name: 'backlog' }">Backlog</router-link>
+          <router-link :to="{ name: 'test2' }">Board</router-link>
+          <router-link :to="{ name: 'documents' }">Documents</router-link>
+          <!-- <router-link :to="{ name: 'roadmap' }">Roadmap</router-link> -->
+          <router-link :to="{ name: 'roadmap2' }">Roadmap</router-link>
+        </div>
+        <div class="right-items">
+          <router-link :to="">Project Title</router-link>
+          <div class="dropdown">
+            <img src="./assets/images/socks_green.jpg" class="dropbtn topnav-member-avatar" title="Member name">
+            <div class="dropdown-content">
+              <a href="#" @click="toggleNav">Logout</a>
+              <!-- <a href="#">Link 2</a>
+              <a href="#">Link 3</a> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- <router-link :to="{ name: 'boards' }" class="split" @click="toggleNav">Logout</router-link> -->
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
@@ -44,31 +86,8 @@
       <div class="page-container">
         <router-view></router-view>
       </div>
-      
 
-      <!-- <div class="cart">Cart({{ cart.length }})</div>
-      <product-display :premium="premium" @add-to-cart="updateCart"></product-display> -->
-
-      <!-- <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img :class="{ 'out-of-stock-img': !inStock }" v-bind:src="image">
-          </div>
-          <div class="product-info">
-            <h1>{{ product }}</h1>
-            <p v-if="inStock">In Stock</p>
-            <p v-else>Out of Stock</p>
-            <ul>
-              <li v-for="detail in details">{{ detail }}</li>
-            </ul>
-            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
-            <button class="button" v-on:click="addToCart">Add to Cart</button>
-            <button class="button" @click="removeFromCart">Remove Item</button>
-          </div>
-        </div>
-      </div> -->
-
-      <div class="footer">
+      <div class="footer" v-show="showNav">
         <p>
           GameDev Organizer 2025. All Rights Reserved.
         </p>
@@ -100,6 +119,11 @@
     <script src="./pages/AboutPage.js"></script>
     <script src="./pages/ContactPage.js"></script>
     <script src="./pages/TestPage2.js"></script>
+    <script src="./pages/DocumentsPage.js"></script>
+    <script src="./pages/RoadmapPage.js"></script>
+    <script src="./pages/RoadmapPage2.js"></script>
+    <script src="./pages/DashboardPage.js"></script>
+    <script src="./pages/BacklogPage.js"></script>
 
     <!-- Import App -->
     <script src="./main.js"></script>

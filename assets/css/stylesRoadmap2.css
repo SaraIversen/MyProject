@@ -1,0 +1,62 @@
+.roadmap-wrapper2 {
+  font-family: 'Inter', sans-serif;
+  padding: 2rem;
+  background: #fff;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.roadmap-title2 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.roadmap-header2 {
+  display: flex;
+  margin-left: 150px;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.month2 {
+  width: 150px;
+  text-align: center;
+  font-weight: 600;
+  color: #555;
+}
+
+.team-section2 {
+  margin-bottom: 2rem;
+}
+
+.team-header2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 150px;
+  font-weight: 600;
+  color: #333;
+  float: left;
+}
+
+.team-roadmap2 {
+  position: relative;
+  margin-left: 150px;
+  height: 80px;
+  border-bottom: 1px solid #eee;
+}
+
+.task-bar2 {
+  position: absolute;
+  top: 20px;
+  height: 30px;
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 30px;
+  padding-left: 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

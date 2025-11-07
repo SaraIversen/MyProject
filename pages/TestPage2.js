@@ -6,11 +6,11 @@ const TestPage2 = {
         <div class="kanbanboard-header">
             <h1>Title</h1>
             <div class="kanbanboard-header-spacer">
-                <img src="./assets/images/socks_green.jpg" class="member-avatar">
-                <img src="./assets/images/socks_blue.jpg" class="member-avatar">
-                <img src="./assets/images/socks_blue.jpg" class="member-avatar">
-                <img src="./assets/images/socks_green.jpg" class="member-avatar">
-                <img src="./assets/images/socks_blue.jpg" class="member-avatar">
+                <img src="./assets/images/socks_green.jpg" class="member-avatar" title="Member name 1">
+                <img src="./assets/images/socks_blue.jpg" class="member-avatar" title="Member name 2">
+                <img src="./assets/images/socks_blue.jpg" class="member-avatar" title="Member name 3">
+                <img src="./assets/images/socks_green.jpg" class="member-avatar" title="Member name 4">
+                <img src="./assets/images/socks_blue.jpg" class="member-avatar" title="Member name 5">
                 <button class="button" @click="">Share</button>
             </div>
         </div>
@@ -104,20 +104,40 @@ const TestPage2 = {
         return {
             boardTitle: '',
             columns: [
-                { id: 1, title: 'To Do', cards: [
-                    { id: 1, title: 'Design main menu', description: '' },
-                    { id: 2, title: 'Implement login system', description: '' }
-                ], creatingNewCard: false },
-                { id: 2, title: 'In Progress', cards: [{ id: 3, title: 'Networking system', description: '' }], creatingNewCard: false },
-                { id: 3, title: 'Done', cards: [{ id: 4, title: 'Project setup', description: '' }], creatingNewCard: false },
+                { 
+                    id: 1, 
+                    title: 'To Do', 
+                    cards: [
+                        { id: 1, title: 'Design main menu', description: '' },
+                        { id: 2, title: 'Implement login system', description: '' }
+                    ], 
+                    creatingNewCard: false 
+                },
+                {   
+                    id: 2, 
+                    title: 'In Progress', 
+                    cards: [
+                        { id: 3, title: 'Networking system', description: '' }
+                    ], 
+                    creatingNewCard: false 
+                },
+                { 
+                    id: 3, 
+                    title: 'Done', 
+                    cards: [
+                        { id: 4, title: 'Project setup', description: '' }
+                    ], 
+                    creatingNewCard: false 
+                },
             ],
 
             creatingNewColumn: false,
             newColumnTitle: '',
-            newCardText: [],
 
             hoveredColumnIndex: null,
             draggedColumnIndex: null,
+
+            newCardText: [],
 
             draggedCard: null,
             dropTarget: { colIndex: null, cardIndex: null },
@@ -180,7 +200,7 @@ const TestPage2 = {
             // Add the new card
             column.cards.push({
                 id: Date.now(),
-                title,
+                title: text,
             });
 
             // Reset input

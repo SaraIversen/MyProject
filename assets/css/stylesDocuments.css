@@ -1,0 +1,111 @@
+.docs-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  background: #555;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.sidebar li.active, .sidebar li:hover {
+  background: #353550;
+}
+
+.sidebar input {
+  margin-top: 1rem;
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: none;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  background: #f5f5f5;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.doc-list {
+  width: 200px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.doc-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.doc-list li {
+  padding: 0.4rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.doc-list li.active, .doc-list li:hover {
+  background: #dfe3f0;
+}
+
+.doc-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.title-input {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.content-editor {
+  flex: 1;
+  border: none;
+  padding: 1rem;
+  resize: none;
+  font-family: monospace;
+  background: #fafafa;
+}
+
+.editor-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.documents-button {
+  background: #3a7afe;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1f5eea;
+}
