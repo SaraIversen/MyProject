@@ -1,9 +1,12 @@
 const routes = [
+    // Public pages:
     { name: 'home', path: '/', component: HomePage },
-    { name: 'boards', path: '/boards', component: BoardsPage, meta: { requiresAuth: true } },
-    { name: 'kanbanboard', path: '/board/:id/:title', component: KanbanBoardPage, meta: { requiresAuth: true } },
     { name: 'about', path: '/about-us', component: AboutPage },
     { name: 'contact', path: '/contact', component: ContactPage },
+    { name: 'login', path: '/login', component: LoginPage },
+    // Requires authentication:
+    { name: 'boards', path: '/boards', component: BoardsPage, meta: { requiresAuth: true } },
+    { name: 'kanbanboard', path: '/board/:id/:title', component: KanbanBoardPage, meta: { requiresAuth: true } },
     { name: 'test2', path: '/test2', component: TestPage2, meta: { requiresAuth: true } },
     { name: 'documents', path: '/documents', component: DocumentsPage, meta: { requiresAuth: true } },
     { name: 'roadmap', path: '/roadmap', component: RoadmapPage, meta: { requiresAuth: true } },
@@ -11,7 +14,6 @@ const routes = [
     { name: 'dashboard', path: '/dashboard', component: DashboardPage, meta: { requiresAuth: true } },
     { name: 'backlog', path: '/backlog', component: BacklogPage, meta: { requiresAuth: true } },
     { name: 'moodboard', path: '/moodboard', component: MoodboardPage, meta: { requiresAuth: true } },
-    { name: 'login', path: '/login', component: LoginPage },
 ]
 
 const router = VueRouter.createRouter({
