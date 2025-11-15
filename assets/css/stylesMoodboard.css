@@ -1,0 +1,35 @@
+.moodboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* ✅ ensures full height */
+}
+
+.toolbar {
+  background: #f8f8f8;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  z-index: 10;
+}
+
+.moodboard {
+  position: relative; /* ✅ needed for absolute children */
+  flex-grow: 1;
+  background: #eee;
+  overflow: visible; /* ✅ allow images to be moved anywhere */
+  cursor: grab;
+}
+
+.draggable-image {
+  position: absolute;
+  cursor: grab;
+  transition: box-shadow 0.2s;
+}
+
+.draggable-image img {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  user-select: none;
+  pointer-events: none; /* ✅ allows div to receive mouse events */
+}

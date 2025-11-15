@@ -1,3 +1,5 @@
+const baseUri = "https://localhost:7160/api/boards"
+
 const HomePage = {
   template: /*html*/`
     <div class="home-page">
@@ -6,6 +8,15 @@ const HomePage = {
       <div class="homePage-image">
         <img v-bind:src="imageGreen">
       </div>
+
+    <div v-if="error" style="color: red">Error: {{error}}</div>
+    <div v-if="statuscode" style="color: green">Statuscode: {{statuscode}}</div>
+
+      <ul v-if="boardsList.length">
+        <li v-for="board in boardsList" :key="board.id">
+          Board {{board.id}} {{board.title}}
+        </li>
+      </ul>
 
       <h1>Features</h1>
 
@@ -39,11 +50,33 @@ const HomePage = {
             premium: true,
             imageGreen: './assets/images/socks_green.jpg',
             imageBlue: './assets/images/socks_blue.jpg',
+
+            boardsList: [],
+            error: null, 
+            statuscode: null,
         }
+    },
+    created() {
+      // created() is called automatically when the page is loaded.
+      console.log("created method called");
+      this.getAllBoards();
     },
     methods: {
         updateCart(id) {
             this.cart.push(id)
+        },
+        getAllBoards() {
+          this.error = null;
+
+          axios.get(baseUri)
+          .then(response => {
+              this.boardsList = response.data;
+              this.statuscode = response.status;
+          })
+          .catch(error => {
+              this.boardsList = [];
+              this.error = error.message;
+          })
         },
     }
 }

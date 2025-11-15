@@ -17,8 +17,11 @@
     <link rel="stylesheet" href="./assets/css/stylesDocuments.css" />
     <link rel="stylesheet" href="./assets/css/stylesDashboard.css" />
     <link rel="stylesheet" href="./assets/css/stylesBacklog.css" />
+    <link rel="stylesheet" href="./assets/css/stylesMoodboard.css" />
+    <link rel="stylesheet" href="./assets/css/stylesLogin.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <!-- Import Vue Router -->
     <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.js"></script>
     <!-- Import Bootstrap -->
@@ -33,11 +36,11 @@
   <body>
     <div id="app">
 
-      <!-- Wesite for non-members -->
-      <div class="topnav" id="myTopnav" v-if="showNav">
+      <!-- Navbar for non-members -->
+      <div class="topnav" id="myTopnav" v-if="!loggedIn">
         <div class="left-links">
           <router-link :to="{ name: 'home' }" class="active">Home</router-link>
-            <div class="dropdown">
+            <!-- <div class="dropdown">
             <button class="dropbtn">Dropdown 
               <i class="fa fa-caret-down"></i>
             </button>
@@ -46,31 +49,32 @@
               <a href="#">Link 2</a>
               <a href="#">Link 3</a>
             </div>
-          </div> 
+            </div>  -->
           <router-link :to="{ name: 'about' }">About us</router-link>
           <router-link :to="{ name: 'contact' }">Contact</router-link>
         </div>
         <div class="right-items">
-          <router-link :to="{ name: 'dashboard' }" class="split" @click="toggleNav">Login</router-link>
+          <router-link :to="{ name: 'login' }" class="split">Login</router-link>
         </div>
       </div>
 
-      <!-- Wesite for when logged in -->
-      <div class="topnav" id="myTopnav" v-else="showNav">
+      <!-- Navbar for when logged in -->
+      <div class="topnav" id="myTopnav" v-else="loggedIn">
         <div class="left-links">
           <router-link :to="{ name: 'dashboard' }" class="active"><i class="fa fa-fw fa-home"></i> Dashboard</router-link>
           <router-link :to="{ name: 'backlog' }">Backlog</router-link>
           <router-link :to="{ name: 'test2' }">Board</router-link>
           <router-link :to="{ name: 'documents' }">Documents</router-link>
+          <router-link :to="{ name: 'moodboard' }">Moodboard</router-link>
           <!-- <router-link :to="{ name: 'roadmap' }">Roadmap</router-link> -->
           <router-link :to="{ name: 'roadmap2' }">Roadmap</router-link>
         </div>
         <div class="right-items">
-          <router-link :to="">Project Title</router-link>
+          <!-- <router-link>Project Title</router-link> -->
           <div class="dropdown">
             <img src="./assets/images/socks_green.jpg" class="dropbtn topnav-member-avatar" title="Member name">
             <div class="dropdown-content">
-              <a href="#" @click="toggleNav">Logout</a>
+              <a href="#" @click="logOut">Logout</a>
               <!-- <a href="#">Link 2</a>
               <a href="#">Link 3</a> -->
             </div>
@@ -78,7 +82,7 @@
         </div>
 
         <!-- <router-link :to="{ name: 'boards' }" class="split" @click="toggleNav">Logout</router-link> -->
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" @click="toggleResponsiveNav">
           <i class="fa fa-bars"></i>
         </a>
       </div>
@@ -87,23 +91,12 @@
         <router-view></router-view>
       </div>
 
-      <div class="footer" v-show="showNav">
+      <div class="footer" v-show="!loggedIn">
         <p>
           GameDev Organizer 2025. All Rights Reserved.
         </p>
       </div>
     </div>
-
-    <script>
-      function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-          x.className += " responsive";
-        } else {
-          x.className = "topnav";
-        }
-      }
-    </script>
 
     <!-- Import Components -->
     <script src="./components/ReviewForm.js"></script>
@@ -112,18 +105,21 @@
     <script src="./components/ContactForm.js"></script>
     <script src="./components/Modal.js"></script>
 
-    <!-- Load the Pages" -->
-    <script src="./pages/HomePage.js"></script>
-    <script src="./pages/BoardsPage.js"></script>
-    <script src="./pages/KanbanBoardPage.js"></script>
-    <script src="./pages/AboutPage.js"></script>
-    <script src="./pages/ContactPage.js"></script>
-    <script src="./pages/TestPage2.js"></script>
-    <script src="./pages/DocumentsPage.js"></script>
-    <script src="./pages/RoadmapPage.js"></script>
-    <script src="./pages/RoadmapPage2.js"></script>
-    <script src="./pages/DashboardPage.js"></script>
-    <script src="./pages/BacklogPage.js"></script>
+    <!-- Load the Pages -->
+    <script src="./pages/public/HomePage.js"></script>
+    <script src="./pages/public/AboutPage.js"></script>
+    <script src="./pages/public/ContactPage.js"></script>
+    <script src="./pages/public/LoginPage.js"></script>
+
+    <script src="./pages/requiresAuth/BoardsPage.js"></script>
+    <script src="./pages/requiresAuth/KanbanBoardPage.js"></script>
+    <script src="./pages/requiresAuth/TestPage2.js"></script>
+    <script src="./pages/requiresAuth/DocumentsPage.js"></script>
+    <script src="./pages/requiresAuth/RoadmapPage.js"></script>
+    <script src="./pages/requiresAuth/RoadmapPage2.js"></script>
+    <script src="./pages/requiresAuth/DashboardPage.js"></script>
+    <script src="./pages/requiresAuth/BacklogPage.js"></script>
+    <script src="./pages/requiresAuth/MoodboardPage.js"></script>
 
     <!-- Import App -->
     <script src="./main.js"></script>
