@@ -9,6 +9,9 @@ const HomePage = {
         <img v-bind:src="imageGreen">
       </div>
 
+    <h2>How To Create A Loader</h2>
+    <div class="loader" v-if="loading"></div>
+
     <div v-if="error" style="color: red">Error: {{error}}</div>
     <div v-if="statuscode" style="color: green">Statuscode: {{statuscode}}</div>
 
@@ -51,6 +54,7 @@ const HomePage = {
             imageGreen: './assets/images/socks_green.jpg',
             imageBlue: './assets/images/socks_blue.jpg',
 
+            loading: false,
             boardsList: [],
             error: null, 
             statuscode: null,
@@ -66,6 +70,7 @@ const HomePage = {
             this.cart.push(id)
         },
         getAllBoards() {
+          this.loading = true;
           this.error = null;
 
           axios.get(baseUri)
@@ -77,6 +82,8 @@ const HomePage = {
               this.boardsList = [];
               this.error = error.message;
           })
+
+          this.loading = false;
         },
     }
 }
