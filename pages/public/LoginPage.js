@@ -34,32 +34,21 @@ const LoginPage = {
     }
   },
   methods: {
-    login() 
+    async login() 
     {
       console.log("LOGIN FUNCTION CALLED");
       this.errorMessage = "";
 
-      axios.post(loginUri, {"email" : this.email, "password" : this.password})
-      .then(response => 
-      {
+      await axios.post(loginUri, {"email" : this.email, "password" : this.password})
+      .then(response => {
         console.log("Login successful:", response.data);
-
         this.loginSuccess(response.data)
-
-        // Save user info or token if needed
-        //localStorage.setItem("user", JSON.stringify(response.data));
-
-        //this.setShowNav(false); // Hide navbar
-        //this.$router.push("/dashboard"); // Navigate to home page
       })
-      .catch(error => 
-        {
-        if (error.response) 
-        {
+      .catch(error => {
+        if (error.response) {
           this.errorMessage = error.response.data.message; // Status code response
         }
-        else 
-        {
+        else {
           this.errorMessage = "Cannot reach server"; // Network error, server not reachable, etc.
         }
       })

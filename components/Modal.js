@@ -11,7 +11,7 @@ const Modal = {
         <div class="modal-body">
 
           <!-- Custom MultiSelect -->
-          <div class="multiselect" @click="toggleDropdown">
+          <!--<div class="multiselect" @click="toggleDropdown">
             <div class="selected" :class="{ placeholder: selectedLabels.length === 0 }">
               <template v-if="selectedLabels.length === 0">
                 Select colors...
@@ -32,30 +32,30 @@ const Modal = {
                 {{ label.color }}
               </div>
             </div>
-          </div>
+          </div>-->
 
 
-          <!--<button class="button-modal" @click="">Labels</button>
-          <label for="labels">Labels</label>
-          <select id="labels" name="labels" v-model="currentLabels" multiple="multiple">
-            <option>Red</option>
-            <option>Green</option>
-            <option>Blue</option>
-            <option>Yellow</option>
-          </select>
+                    <!--<button class="button-modal" @click="">Labels</button>
+                    <label for="labels">Labels</label>
+                    <select id="labels" name="labels" v-model="currentLabels" multiple="multiple">
+                      <option>Red</option>
+                      <option>Green</option>
+                      <option>Blue</option>
+                      <option>Yellow</option>
+                    </select>
 
-          <div class="multiselect" id="colorSelect">
-          <div class="selected placeholder">Select colors...</div>
-          <div class="dropdown">
-            <div data-value="Red">Red</div>
-            <div data-value="Green">Green</div>
-            <div data-value="Blue">Blue</div>
-            <div data-value="Yellow">Yellow</div>
-          </div>
-        </div>-->
+                    <div class="multiselect" id="colorSelect">
+                    <div class="selected placeholder">Select colors...</div>
+                    <div class="dropdown">
+                      <div data-value="Red">Red</div>
+                      <div data-value="Green">Green</div>
+                      <div data-value="Blue">Blue</div>
+                      <div data-value="Yellow">Yellow</div>
+                    </div>
+                  </div>-->
 
-          <button class="button-modal" @click="">Checklist</button>
-          <button class="button-modal" @click="">Members</button>
+          <!-- <button class="button-modal" @click="">Checklist</button>
+          <button class="button-modal" @click="">Members</button> -->
 
           <p><strong>Description</strong></p>
           <slot></slot>

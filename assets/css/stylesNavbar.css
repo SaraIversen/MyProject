@@ -14,7 +14,7 @@
 }
 
 .active {
-  background-color: #04AA6D;
+  background-color: #455F8F; /* #04AA6D; */
   color: white;
 }
 
@@ -73,7 +73,7 @@
 /* Create a right-aligned (split) link inside the navigation bar */
 .topnav a.split {
   float: right;
-  background-color: #04AA6D;
+  background-color: #455F8F; /* #04AA6D; */
   color: white;
 }
 

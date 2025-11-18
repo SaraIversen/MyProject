@@ -26,13 +26,13 @@ const DashboardPage = {
         </div>
       </div>
 
-      <div class="tasks-section">
+      <!--<div class="tasks-section">
         <h2 class="section-title">My Open Tasks</h2>
         <ul class="task-list">
           <li>Design main menu</li>
           <li>Implement login system</li>
         </ul>
-      </div>
+      </div>-->
     </div>
   `,
   data() {

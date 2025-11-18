@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="./assets/css/stylesBacklog.css" />
     <link rel="stylesheet" href="./assets/css/stylesMoodboard.css" />
     <link rel="stylesheet" href="./assets/css/stylesLogin.css" />
+    <link rel="stylesheet" href="./assets/css/stylesAboutPage.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
@@ -62,12 +63,13 @@
       <div class="topnav" id="myTopnav" v-else="loggedIn">
         <div class="left-links">
           <router-link :to="{ name: 'dashboard' }" class="active"><i class="fa fa-fw fa-home"></i> Dashboard</router-link>
-          <router-link :to="{ name: 'backlog' }">Backlog</router-link>
-          <router-link :to="{ name: 'test2' }">Board</router-link>
+          <!-- <router-link :to="{ name: 'backlog' }">Backlog</router-link> -->
+          <router-link :to="{ name: 'boards' }">Boards</router-link>
+          <!-- <router-link :to="{ name: 'test2' }">Board</router-link> -->
           <router-link :to="{ name: 'documents' }">Documents</router-link>
           <router-link :to="{ name: 'moodboard' }">Moodboard</router-link>
           <!-- <router-link :to="{ name: 'roadmap' }">Roadmap</router-link> -->
-          <router-link :to="{ name: 'roadmap2' }">Roadmap</router-link>
+          <!-- <router-link :to="{ name: 'roadmap2' }">Roadmap</router-link> -->
         </div>
         <div class="right-items">
           <!-- <router-link>Project Title</router-link> -->

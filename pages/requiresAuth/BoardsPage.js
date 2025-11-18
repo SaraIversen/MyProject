@@ -1,6 +1,6 @@
 const BoardsPage = {
   template: /*html*/`
-    <div class="defaultPageSetup">
+    <div class="boardsPageSetup">
         <!-- <h1>Boards</h1> -->
 
         <br/>
@@ -28,7 +28,8 @@ const BoardsPage = {
                         }"
                     >
 
-                    <img :src="board.image" class="board-image" />
+                    <img v-if="boardImage" :src="boardImage" class="board-image" />
+                    <div v-else="boardImage" class="board-background-image"></div>
                     <h2>{{ board.title }}</h2>
                     </router-link>
                 </div>
@@ -59,7 +60,8 @@ const BoardsPage = {
                     }"
                 >
 
-                <img :src="board.image" class="board-image" />
+                <img v-if="boardImage" :src="boardImage" class="board-image" />
+                <div v-else="boardImage" class="board-background-image"></div>
                 <h2>{{ board.title }}</h2>
                 </router-link>
             </div>
@@ -75,7 +77,7 @@ const BoardsPage = {
                 <div class="modal">
                 <h2>Create New Board</h2>
                 <input v-model="newBoardTitle" placeholder="Board title..." />
-                <input v-model="newBoardImage" placeholder="Image URL (optional)" />
+                <!--<input v-model="newBoardImage" placeholder="Image URL (optional)" />-->
                 <div class="modal-actions">
                     <button @click="createBoard">Create</button>
                     <button class="cancel" @click="closeModal">Cancel</button>
@@ -87,14 +89,21 @@ const BoardsPage = {
   `,
     data() {
         return {
+            //boardImage: './assets/images/Blank.png',
+            boardImage: null,
             boards: [
-                { id: 1, title: 'My First Board', image: './assets/images/socks_green.jpg', starred: false },
-                { id: 2, title: 'Game Jam u24', image: './assets/images/socks_blue.jpg', starred: true },
+                // { id: 1, title: 'My First Board', image: './assets/images/socks_green.jpg', starred: false },
+                // { id: 2, title: 'Game Jam u24', image: './assets/images/socks_blue.jpg', starred: true },
             ],
             showModal: false,
             newBoardTitle: '',
-            newBoardImage: '',
+            //newBoardImage: '',
         };
+    },
+    async created() {
+      // created() is called automatically when the page is loaded.
+      //console.log("created method called");
+      await this.getAllBoards();
     },
     methods: {
         toggleStar(board) {
@@ -106,7 +115,7 @@ const BoardsPage = {
         closeModal() {
             this.showModal = false;
             this.newBoardTitle = '';
-            this.newBoardImage = '';
+            //this.newBoardImage = '';
         },
         createBoard() {
             const title = this.newBoardTitle.trim();
@@ -115,11 +124,27 @@ const BoardsPage = {
             this.boards.push({
                 id: Date.now(),
                 title,
-                image: this.newBoardImage || 'https://via.placeholder.com/300x150?text=New+Board',
+                //image: this.newBoardImage || 'https://via.placeholder.com/300x150?text=New+Board',
                 starred: false,
             });
 
             this.closeModal();
+        },
+        async getAllBoards() {
+          this.loading = true;
+          this.error = null;
+
+          await axios.get(baseUri)
+          .then(response => {
+              this.boards = response.data;
+              this.statuscode = response.status;
+          })
+          .catch(error => {
+              this.boards = [];
+              this.error = error.message;
+          })
+
+          this.loading = false;
         },
     },
     computed: {

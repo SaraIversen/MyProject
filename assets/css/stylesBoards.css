@@ -1,3 +1,8 @@
+.boardsPageSetup {
+  width: 60%;
+  margin: auto;
+}
+
 .boards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -35,6 +40,12 @@
   border: none; 
 }
 
+.board-background-image {
+  width: 100%;
+  height: 75px;
+  background-color: #bdbdbd; /* #FFBC88; */
+}
+
 .board h2 {
   font-size: 1em;
   margin: 5px 0; 
@@ -51,11 +62,11 @@
 
 .star-filled {
   color: gold;
-  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  text-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .star-outline {
-  color: #ccc;
+  color: #4d4d4d;
 }
 
 /* --- Create board card styling --- */

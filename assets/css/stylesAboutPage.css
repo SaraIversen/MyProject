@@ -1,0 +1,20 @@
+.about-page {
+  background-color: #FCECD4;
+}
+
+.about-container {
+    /* width: 60%;
+    margin: auto; */
+    max-width: 1100px;
+    text-align: center;
+
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f9fafc;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.about-container p {
+    padding: 1.25rem;
+}
