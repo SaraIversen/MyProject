@@ -3,7 +3,8 @@ const loginUri = "https://localhost:7160/api/user/login"
 const LoginPage = {
   inject: ['loginSuccess'],
   template: /*html*/`
-    <div class="login-container">
+  <div class="login-page">
+    <div class="loginPage-margin">
       <div class="login-box">
         <h2 class="login-h2">Login</h2>
 
@@ -25,6 +26,7 @@ const LoginPage = {
         </form>
       </div>
     </div>
+  </div>
   `,
   data() {
     return {

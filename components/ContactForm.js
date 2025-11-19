@@ -1,20 +1,24 @@
 const ContactForm = { 
   template: /*html*/`
-  <!-- <form class="contact-form" @submit.prevent="onSubmit"> -->   
+  <h1 class="contact-title">Contact</h1>
+
   <form class="contact-form">
     <label for="name">Name</label>
-    <input id="name" v-model="name">
+    <input type="text" id="name" name="name" placeholder="Your name..">
 
     <label for="email">Email</label>
-    <input id="email" v-model="email">
+    <input type="text" id="email" name="email" placeholder="Your email..">
 
     <label for="subject">Subject</label>
-    <input id="subject" v-model="subject">
+    <select id="subject" name="subject">
+      <option value="feedback">Feedback</option>
+      <option value="other">Other</option>
+    </select>
 
-    <label for="message">Message</label>      
-    <textarea id="message" v-model="message"></textarea>
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-    <input class="button" type="submit" value="Submit" @click="onSubmit">   
+    <input type="submit" value="Submit" @click="onSubmit">
   </form>
   `,
   data() {
