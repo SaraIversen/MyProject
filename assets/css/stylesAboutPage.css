@@ -1,5 +1,6 @@
 .about-page {
   background-color: #FCECD4;
+  min-height: 100vh; /* makes it fill the entire screen height */
 }
 
 .aboutPage-margin {
